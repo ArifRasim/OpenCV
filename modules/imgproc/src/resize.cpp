@@ -3684,7 +3684,7 @@ void resize(int src_type,
 {
     CV_INSTRUMENT_REGION();
 
-    CV_Assert((dst_width > 0 && dst_height > 0) || (inv_scale_x > 0 && inv_scale_y > 0));
+    
     if (inv_scale_x < DBL_EPSILON || inv_scale_y < DBL_EPSILON)
     {
         inv_scale_x = static_cast<double>(dst_width) / src_width;
@@ -4062,7 +4062,7 @@ void cv::resize( InputArray _src, OutputArray _dst, Size dsize,
     CV_Assert( !ssize.empty() );
     if( dsize.empty() )
     {
-        CV_Assert(inv_scale_x > 0); CV_Assert(inv_scale_y > 0);
+        
         dsize = Size(saturate_cast<int>(ssize.width*inv_scale_x),
                      saturate_cast<int>(ssize.height*inv_scale_y));
         CV_Assert( !dsize.empty() );
@@ -4071,7 +4071,7 @@ void cv::resize( InputArray _src, OutputArray _dst, Size dsize,
     {
         inv_scale_x = (double)dsize.width/ssize.width;
         inv_scale_y = (double)dsize.height/ssize.height;
-        CV_Assert(inv_scale_x > 0); CV_Assert(inv_scale_y > 0);
+        
     }
 
     if (interpolation == INTER_LINEAR_EXACT && (_src.depth() == CV_32F || _src.depth() == CV_64F))
